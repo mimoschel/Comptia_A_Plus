@@ -1,8 +1,6 @@
 # Reference: https://www.youtube.com/watch?v=yriw5Zh406s
 
-# This quiz game is designed to challenge and assess your knowledge of the correct network ports.
-# Put your memory to the test and enhance your understanding of essential network protocols
-# by engaging in this interactive and educational quiz experience.
+# This quiz game is designed to challenge and assess your knowledge of the correct network ports. Put your memory to the test and enhance your understanding of essential network protocols by engaging in this interactive and educational quiz experience.
 
 
 def new_quiz():
