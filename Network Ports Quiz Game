@@ -1,0 +1,112 @@
+# Reference: https://www.youtube.com/watch?v=yriw5Zh406s
+
+# This quiz game is designed to challenge and assess your knowledge of the correct network ports.
+# Put your memory to the test and enhance your understanding of essential network protocols
+# by engaging in this interactive and educational quiz experience.
+
+
+def new_quiz():
+    guesses = []
+    correct_guesses = 0
+    question_num = 1
+
+    for key in questions:
+        print("-------------------------------------------")
+        print(key)
+        for i in options[question_num-1]:
+            print(i)
+        guess = input("Enter (A, B, or C): ")
+        guess = guess.upper()
+        guesses.append(guess)
+        correct_guesses += check_answer(questions.get(key), guess)
+
+        question_num += 1
+
+    display_score(correct_guesses, guesses)
+#------------------------------
+def check_answer(answer, guess):
+    if answer == guess:
+        print("CORRECT ANSWER!")
+        return 1
+    else:
+        print("WRONG ANSWER")
+        return 0
+#--------------------------------
+def display_score(correct_guesses, guesses):
+    print("-----------------------")
+    print("RESULTS")
+    print("-----------------------")
+    print("Answers: ", end="")
+    for i in questions:
+        print(questions.get(i), end="")
+    print()
+
+    print("Guesses: ", end="")
+    for i in guesses:
+        print(i, end="")
+    print()
+
+    score = int((correct_guesses/len(questions)) * 100)
+    print("Your score is: " + str(score)+"%")
+
+#--------------------------------
+def play_again():
+    response = input("Do you want to play again? (yes or no): ")
+    response = response.upper()
+    if response == "YES":
+        return True
+    else:
+        return False
+#--------------------------------
+
+
+questions ={
+    "1.Which port is used for HTTPS?: ": "A",
+    "2.Which port is used for NetBIOS?: ": "B",
+    "3.Which port is used for FTP?: ": "C",
+    "4.Which port is used for HTTP?: ": "C",
+    "5.Which port is used for POP3?: ": "A",
+    "6.Which port is used for SMB/CIFS/Samba?: ": "A",
+    "7.Which port is used for IMAP?: ": "C",
+    "8.Which port is used for RDP?: ": "B",
+    "9.Which port is used for SMTP?: ": "B",
+    "10.Which port is used for DHCP?: ": "C",
+    "11.Which port is used for DNS?: ": "A",
+    "12.Which port is used for TFTP?: ": "A",
+    "13.Which port is used for SLP(Service Location Protocol)?: ": "B",
+    "14.Which port is used for LDAP?: ": "C",
+    "15.Which port is used for Telnet?: ": "A",
+    "16.Which port is used for AFP(Apple Filing Protocol)?: ": "B",
+    "17.Which port is used for Syslog?: ": "B",
+    "18.Which port is used for SNMP?: ": "A",
+    "19.Which port is used for SSH/SFTP?: ": "C"
+}
+
+options = [
+    ["A.443", "B.445", "C.21"],
+    ["A.57", "B.137/139", "C.161/162"],
+    ["A.137/139", "B.56", "C.20/21"],
+    ["A.81", "B.56", "C.80"],
+    ["A.110 ", "B.113", "C.143"],
+    ["A.445 ", "B.443", "C.455"],
+    ["A.134 ", "B.133", "C.143 "],
+    ["A.139", "B.3389", "C.389"],
+    ["A.23", "B.25", "C.22"],
+    ["A.67/69", "B.68/69", "C.67/68"],
+    ["A.53", "B.35", "C.65"],
+    ["A.69", "B.68", "C.67"],
+    ["A.428", "B.427", "C.429"],
+    ["A.3389", "B.379", "C.389"],
+    ["A.23", "B.22", "C.32"],
+    ["A.549", "B.548", "C.588"],
+    ["A.513", "B.514", "C.533"],
+    ["A.161/162", "B.137/139", "C.68/69"],
+    ["A.21", "B.20", "C.22"]
+]
+
+
+new_quiz()
+
+while play_again():
+    new_quiz()
+print("Bye!")
